@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Money</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+<h2>Your Gold: <input type="text" value="{{session['gold']}}"></h2>
+<fieldset>
+	<h2>Farm</h2>
+	<p>Earns 10-20 golds</p>
+	<form action="/process_money" method="post">
+		<input type="hidden" name="building" value="farm" />
+		<input type="submit" value="Find Gold!"/>
+	</form>
+</fieldset>
+<fieldset>
+	<h2>Cave</h2>
+	<p>Earns 5-10 golds</p>
+	<form action="/process_money" method="post">
+		<input type="hidden" name="building" value="cave" />
+		<input type="submit" value="Find Gold!"/>
+	</form>
+</fieldset>
+<fieldset>
+	<h2>House</h2>
+	<p>Earns 2-5 golds</p>
+	<form action="/process_money" method="post">
+		<input type="hidden" name="building" value="house" />
+		<input type="submit" value="Find Gold!"/>
+	</form>
+</fieldset>
+<fieldset>
+	<h2>Casino</h2>
+	<p>Earns -50-50 golds</p>
+	<form action="/process_money" method="post">
+		<input type="hidden" name="building" value="casino" />
+		<input type="submit" value="Find Gold!"/>
+	</form>
+</fieldset>
+<div>
+	<h2>Activity Log:</h2>
+	{% for message in session['messages'] %}
+		<p class="{{message['color']}}">{{message['message']}}</p>
+	{% endfor %}
+</div>
+</body>
+</html>
